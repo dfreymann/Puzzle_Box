@@ -71,6 +71,21 @@
 // Note that there is now a 'tinygpsplus' library available. 
 #include <TinyGPS.h>
 
+// ASSIGN THE LOCATION by extracting from a list of 
+// locations that are #defined in an external include file 
+#include "locations.h"
+// 5.4.20 File contains list of locations as: 
+//     #define THE_PLACE                 36.794225, -71.091475
+// from which list one is chosen to set the target coordinates
+// for the compiled version as initialized here - 
+static const double coordinates[] = {THE_PLACE};
+// 5.4.20 The File also contains startup messages. A kluge for now. 
+// DEFINE THE INITIAL TEXT MESSAGES
+const char* initialText1[] = {StartupMessage2016A};
+const char* initialText2[] = {StartupMessage2016B}; 
+// 5.4.20 A more elegant solution not requiring
+// recompilation every time would be nice. To be done. 
+
 // Pin assignments for basic on/off functionality
 static const int LV_Switch_Off = 12; // LV OFF Switch Pin 
 static const int LED_Pin = 2; //  Button Switch LED Pin
@@ -119,24 +134,9 @@ TinyGPS tinygps;
 // static const int RADIUS = 50;  // meters
 static const int RADIUS = 50; // changed 6.24.13
 
-// ASSIGN THE LOCATION by extracting from a list of 
-// locations that are #defined in an external include file 
-#include "locations.h"
-// 5.4.20 File contains list of locations as: 
-//     #define THE_PLACE                 36.794225, -71.091475
-// from which list one is chosen to set the target coordinates
-// for the compiled version as initialized here - 
-static const double coordinates[] = {THE_PLACE};
-// 5.4.20 A more elegant solution not requiring
-// recompilation every time would be nice! 
-
-// define the values used in the legacy code: 
+// define the location values used in the legacy code: 
 static const double DEST_LATITUDE = coordinates[0];
 static const double DEST_LONGITUDE =  coordinates[1]; 
-
-// DEFINE THE INITIAL TEXT MESSAGES
-const char* initialText1[] = {StartupMessage2016A};
-const char* initialText2[] = {StartupMessage2016B}; 
 
 /* The Arduino setup() function */
 void setup()
