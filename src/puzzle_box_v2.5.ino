@@ -29,7 +29,9 @@
 //          cut and paste from the list and recompile).  
 //
 // 5.4.20 - migrating to platformio (skipping _v3, which attempts to implement two-location tracking).
-//        Not working yet... problem with LiquidCrystal library? 
+//        Not working yet. *** problem with LiquidCrystal library *** 
+// 5.4.20 A more elegant solution to location handling not requiring recompilation every time would be nice! 
+//        To be done. 
 //
 // 
 
@@ -120,8 +122,14 @@ static const int RADIUS = 50; // changed 6.24.13
 // ASSIGN THE LOCATION by extracting from a list of 
 // locations that are #defined in an external include file 
 #include "locations.h"
-// using this initialization for now 
-static const double coordinates[] = {FLA_2016_SOUTH_TIP};
+// 5.4.20 File contains list of locations as: 
+//     #define THE_PLACE                 36.794225, -71.091475
+// from which list one is chosen to set the target coordinates
+// for the compiled version as initialized here - 
+static const double coordinates[] = {THE_PLACE};
+// 5.4.20 A more elegant solution not requiring
+// recompilation every time would be nice! 
+
 // define the values used in the legacy code: 
 static const double DEST_LATITUDE = coordinates[0];
 static const double DEST_LONGITUDE =  coordinates[1]; 
