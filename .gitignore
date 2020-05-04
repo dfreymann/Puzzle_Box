@@ -3,4 +3,6 @@
 test/
 backup/
 .travis.yml
+locations.h
+
 
