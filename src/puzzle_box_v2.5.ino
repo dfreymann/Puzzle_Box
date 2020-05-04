@@ -48,7 +48,7 @@
 // Require one Library for the LCD Display
 // Note that SEEED states there are compatibility issues and suggest downloading a
 // modified Library @ http://www.seeedstudio.com/depot/images/product/LiquidCrystal.rar (not used)
-// 5.4.20 - getting problems during compilation. 
+// 5.4.20 - *** getting problems during compilation ***
 #include <LiquidCrystal.h>   // Included with Arduino distribution
 
 // Require one Library for the Servo
